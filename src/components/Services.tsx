@@ -1,34 +1,9 @@
 import Link from "next/link";
-import {
-  ArrowUpRight,
-  Briefcase,
-  Globe,
-  type LucideIcon,
-  RefreshCw,
-  Rocket,
-  Search,
-  Server,
-  ShieldCheck,
-  ShoppingBag,
-  Wrench,
-  LayoutTemplate,
-} from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
 import { SectionHeading } from "@/components/SectionHeading";
-import { type ServiceIcon, services } from "@/config/site";
-
-const icons: Record<ServiceIcon, LucideIcon> = {
-  globe: Globe,
-  briefcase: Briefcase,
-  rocket: Rocket,
-  shopping: ShoppingBag,
-  portfolio: LayoutTemplate,
-  refresh: RefreshCw,
-  server: Server,
-  wrench: Wrench,
-  search: Search,
-  shield: ShieldCheck,
-};
+import { services } from "@/config/site";
+import { serviceIcons } from "@/lib/service-icons";
 
 export function Services() {
   return (
@@ -46,7 +21,7 @@ export function Services() {
 
         <ul className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {services.map((s, i) => {
-            const Icon = icons[s.icon];
+            const Icon = serviceIcons[s.icon];
             return (
               <li key={s.id}>
                 <Reveal delay={(i % 3) * 0.08} className="h-full">

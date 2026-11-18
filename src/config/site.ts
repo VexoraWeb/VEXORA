@@ -139,82 +139,169 @@ export type ServiceIcon =
 
 export interface Service {
   id: string;
+  /** Adresse de la page du service : /services/<slug> (sauf l'audit, qui a sa propre page). */
+  slug: string;
   icon: ServiceIcon;
   title: string;
   description: string;
+  /** Destination du lien « Découvrir ce service ». */
   href: string;
+  /** Texte d'introduction de la page du service. */
+  intro: string;
+  /** Liste « Ce que cela comprend » de la page du service. */
+  includes: string[];
+  /** Pack conseillé : présélectionné quand on clique sur « Demander un devis ». */
+  packId?: PackId;
 }
 
 export const services: Service[] = [
   {
     id: "vitrine",
+    slug: "sites-vitrines",
     icon: "globe",
     title: "Sites vitrines",
     description: "Une présence claire et élégante pour présenter votre activité, vos valeurs et vos coordonnées.",
-    href: "/devis",
+    href: "/services/sites-vitrines",
+    intro: "Un site vitrine présente votre activité simplement : qui vous êtes, ce que vous proposez et comment vous contacter.",
+    includes: [
+      "Un site de quelques pages (jusqu'à 3 pages avec le pack Starter)",
+      "Un design moderne, adapté aux mobiles et aux ordinateurs",
+      "Un formulaire de contact",
+      "Les bases du référencement (SEO)",
+      "Un contrôle de sécurité de base avant la livraison",
+    ],
+    packId: "starter",
   },
   {
     id: "pro",
+    slug: "sites-professionnels",
     icon: "briefcase",
     title: "Sites professionnels",
     description: "Des sites multipages structurés, pensés pour crédibiliser et développer votre entreprise.",
-    href: "/devis?pack=business",
+    href: "/services/sites-professionnels",
+    intro: "Pour les entreprises qui ont besoin de plusieurs pages structurées : présentation, services, contenus et contact.",
+    includes: [
+      "Un site multipage (jusqu'à 6 pages avec le pack Business)",
+      "Un design personnalisé pour votre activité",
+      "L'intégration de vos réseaux sociaux",
+      "Un audit de sécurité approfondi et un rapport de sécurité synthétique",
+    ],
+    packId: "business",
   },
   {
     id: "landing",
+    slug: "landing-pages",
     icon: "rocket",
     title: "Landing pages",
     description: "Une page unique, ciblée et soignée, conçue autour d'un objectif précis : contact, offre, événement.",
-    href: "/devis",
+    href: "/services/landing-pages",
+    intro: "Une landing page est une page unique, construite autour d'un seul objectif : vous contacter, présenter une offre ou annoncer un événement.",
+    includes: [
+      "Une page unique, claire et ciblée",
+      "Un design moderne, adapté aux mobiles et aux ordinateurs",
+      "Un formulaire ou un bouton d'action selon votre objectif",
+      "Les bases du référencement (SEO)",
+    ],
   },
   {
     id: "ecommerce",
+    slug: "sites-e-commerce",
     icon: "shopping",
     title: "Sites e-commerce",
     description: "Présentez et vendez vos produits en ligne. Le périmètre est défini ensemble lors du devis.",
-    href: "/devis",
+    href: "/services/sites-e-commerce",
+    intro: "Présentez vos produits en ligne. Un projet e-commerce est plus spécifique qu'un site vitrine : son périmètre est défini avec vous dans le devis.",
+    includes: [
+      "Une présentation de vos produits, pensée pour donner envie",
+      "Un périmètre (nombre de produits, paiement en ligne, livraison…) défini ensemble lors du devis",
+      "Un design adapté aux mobiles et aux ordinateurs",
+      "Un contrôle de sécurité adapté à votre projet",
+    ],
+    packId: "premium",
   },
   {
     id: "portfolio",
+    slug: "portfolios",
     icon: "portfolio",
     title: "Portfolios",
     description: "Mettez en valeur vos réalisations avec un site qui vous ressemble.",
-    href: "/devis",
+    href: "/services/portfolios",
+    intro: "Un portfolio met vos réalisations au premier plan, avec un style qui reflète votre travail.",
+    includes: [
+      "Une présentation soignée de vos réalisations",
+      "Un style qui vous ressemble (minimaliste, moderne, premium…)",
+      "Un design adapté aux mobiles et aux ordinateurs",
+      "Un formulaire de contact",
+    ],
+    packId: "starter",
   },
   {
     id: "refonte",
+    slug: "refonte-de-sites",
     icon: "refresh",
     title: "Refonte de sites",
     description: "Modernisez un site existant : design, lisibilité, adaptation mobile et bonnes pratiques.",
-    href: "/devis",
+    href: "/services/refonte-de-sites",
+    intro: "Vous avez déjà un site mais il a vieilli ? Nous le modernisons en partant de l'existant.",
+    includes: [
+      "Un nouveau design plus moderne et plus lisible",
+      "Une adaptation aux mobiles et aux tablettes",
+      "Les bonnes pratiques de base (SEO, sécurité)",
+      "Un point de départ : l'adresse de votre site actuel, que vous indiquez dans la demande de devis",
+    ],
   },
   {
     id: "hebergement",
+    slug: "hebergement-et-domaine",
     icon: "server",
     title: "Hébergement & domaine",
     description: "Nous vous conseillons et vous accompagnons pour le choix et la mise en place de votre domaine et de votre hébergement.",
-    href: "/devis",
+    href: "/services/hebergement-et-domaine",
+    intro: "Un site a besoin d'un nom de domaine et d'un hébergement. Nous vous conseillons, et vous accompagnons si vous le souhaitez.",
+    includes: [
+      "Des conseils pour choisir votre nom de domaine",
+      "Un accompagnement pour l'hébergement de votre site",
+      "La possibilité de garder votre domaine et votre hébergement actuels",
+      "Un accompagnement à la mise en ligne (inclus dans le pack Premium)",
+    ],
   },
   {
     id: "maintenance",
+    slug: "maintenance",
     icon: "wrench",
     title: "Maintenance",
     description: "Un suivi mensuel optionnel pour garder votre site à jour et fonctionnel.",
-    href: "/devis",
+    href: "/services/maintenance",
+    intro: "Un site demande un suivi après sa mise en ligne. La maintenance mensuelle est une option que vous pouvez ajouter à votre devis.",
+    includes: [
+      "Un suivi régulier pour garder votre site à jour et fonctionnel",
+      "Une option mensuelle, à ajouter lors de la demande de devis",
+      "Le contenu exact de l'option est précisé dans le devis",
+    ],
   },
   {
     id: "seo",
+    slug: "referencement-seo",
     icon: "search",
     title: "Référencement SEO",
     description: "Des bases techniques et éditoriales solides pour être trouvé sur les moteurs de recherche.",
-    href: "/devis",
+    href: "/services/referencement-seo",
+    intro: "Le référencement (SEO) aide votre site à être trouvé sur les moteurs de recherche. Les bases sont comprises dans chaque pack.",
+    includes: [
+      "Le SEO de base inclus dans les packs Starter, Business et Premium",
+      "Une option « SEO avancé » à ajouter à votre devis",
+      "Des bases techniques et éditoriales solides",
+    ],
   },
   {
     id: "audit",
+    slug: "audit",
     icon: "shield",
     title: "Audits de sécurité",
     description: "Analyse des points d'exposition de votre site et recommandations concrètes, avec votre autorisation.",
-    href: "/devis?audit=1",
+    href: "/cybersecurite",
+    intro: "",
+    includes: [],
   },
 ];
 
