@@ -8,7 +8,6 @@ import {
   goals,
   hasWebsiteChoices,
   hostingChoices,
-  packs,
   styles,
 } from "@/config/site";
 
@@ -19,7 +18,7 @@ const ids = (list: WithId) => list.map((x) => x.id) as [string, ...string[]];
 export function clean(value: string): string {
   return value
     .replace(/\r\n?/g, "\n")
-    .replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F  ]/g, "")
+    .replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F\u2028\u2029]/g, "")
     .trim();
 }
 
@@ -54,7 +53,7 @@ export const quoteSchema = z
     websiteUrl: optionalUrl,
     style: z.enum(ids(styles)),
     references: text(1500),
-    pack: z.enum([...(packs.map((p) => p.id) as [string, ...string[]]), AUDIT_ONLY]),
+    pack: z.enum(["starter", "business", "premium", AUDIT_ONLY]),
     domainChoice: z.enum(ids(domainChoices)),
     domainName: text(120),
     hostingChoice: z.enum(ids(hostingChoices)),
