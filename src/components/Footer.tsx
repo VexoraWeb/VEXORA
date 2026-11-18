@@ -12,7 +12,7 @@ const columns = [
     links: [
       { label: "Nos services", href: "/#services" },
       { label: "Packs", href: "/#packs" },
-      { label: "Cybersécurité", href: "/#cybersecurite" },
+      { label: "Cybersécurité", href: "/cybersecurite" },
       { label: "Créer mon projet", href: "/devis" },
     ],
   },

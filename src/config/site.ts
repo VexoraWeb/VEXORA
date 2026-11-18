@@ -30,7 +30,7 @@ export const navLinks = [
   { label: "Accueil", href: "/" },
   { label: "Services", href: "/#services" },
   { label: "Nos packs", href: "/#packs" },
-  { label: "Cybersécurité", href: "/#cybersecurite" },
+  { label: "Cybersécurité", href: "/cybersecurite" },
   { label: "À propos", href: "/#a-propos" },
   { label: "FAQ", href: "/#faq" },
   { label: "Contact", href: "/#contact" },
@@ -43,6 +43,8 @@ export const prices = {
   starter: "À partir de 350 €",
   business: "À partir de 450 €",
   premium: "À partir de 650 €",
+  /** Pack « Analyse complète du site » (audit de sécurité seul). */
+  audit: "100 €",
 } as const;
 
 // ---------------------------------------------------------------------------
@@ -268,6 +270,12 @@ export const auditChoices = [
     description: "Les audits inclus dans votre pack (le cas échéant) restent compris.",
   },
   {
+    id: "complet",
+    label: `Pack Analyse complète du site — ${prices.audit}`,
+    description:
+      "Analyse complète de votre site (HTTPS, en-têtes de sécurité, configurations publiques, formulaires, informations exposées, dépendances) avec rapport et recommandations. Réalisée uniquement avec l'autorisation du propriétaire.",
+  },
+  {
     id: "base",
     label: "Audit de base",
     description:
@@ -311,6 +319,29 @@ export const securityChecks = [
   "Vérification des bonnes pratiques de sécurité",
   "Rapport avec recommandations",
 ];
+
+/** Contenu de la page /cybersecurite et du pack « Analyse complète ». */
+export const auditPack = {
+  name: "Analyse complète du site",
+  price: prices.audit,
+  priceNote: "Tarif du pack. Le périmètre exact et les délais sont confirmés dans le devis, avant tout engagement.",
+  deliverables: [
+    "Un rapport clair, avec les constats classés par priorité",
+    "Des recommandations concrètes pour chaque point relevé",
+    "Un échange pour vous expliquer les résultats",
+  ],
+  steps: [
+    { title: "Votre demande", text: "Vous remplissez la demande d'audit en ligne : adresse du site et contexte." },
+    { title: "Autorisation", text: "Nous vérifions que vous êtes bien le propriétaire du site, ou que vous avez son autorisation." },
+    { title: "Analyse", text: "Nous contrôlons les points listés dans le pack, un par un." },
+    { title: "Rapport", text: "Vous recevez le rapport avec les recommandations, puis nous le passons en revue avec vous." },
+  ],
+  limits: [
+    "L'audit n'est réalisé que sur un site dont vous êtes propriétaire ou pour lequel vous avez une autorisation.",
+    "Un audit identifie des points d'amélioration à un instant donné. Il ne garantit pas une sécurité absolue.",
+    "La correction des points relevés peut faire l'objet d'une prestation séparée.",
+  ],
+} as const;
 
 // ---------------------------------------------------------------------------
 // Équipe — photos : déposer l'image dans /public/team et renseigner `photo`

@@ -160,7 +160,7 @@ export function QuoteFlow() {
     if (pack && packs.some((p) => p.id === pack)) next.pack = pack as PackId;
     if (params.get("audit") === "1") {
       next.pack = AUDIT_ONLY;
-      if (next.auditChoice === "none") next.auditChoice = "independant";
+      if (next.auditChoice === "none") next.auditChoice = "complet";
     }
     setF(next);
     setReady(true);
@@ -378,7 +378,7 @@ export function QuoteFlow() {
                   })}
                 </div>
                 <Choice name="pack-audit" label="Audit de sécurité uniquement (sans création de site)" checked={f.pack === AUDIT_ONLY}
-                  onChange={() => { set("pack", AUDIT_ONLY); if (f.auditChoice === "none") set("auditChoice", "independant"); }} />
+                  onChange={() => { set("pack", AUDIT_ONLY); if (f.auditChoice === "none") set("auditChoice", "complet"); }} />
                 <Err msg={errors.pack} />
               </div>
             )}

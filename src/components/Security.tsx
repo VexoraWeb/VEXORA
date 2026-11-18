@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { ArrowRight, ShieldCheck } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
-import { securityChecks } from "@/config/site";
+import { auditPack, securityChecks } from "@/config/site";
 
 export function Security() {
   return (
@@ -37,9 +37,17 @@ export function Security() {
                   <li>• L&apos;audit est réalisé uniquement avec l&apos;autorisation du propriétaire du site.</li>
                   <li>• Aucune sécurité absolue ne peut être promise : nous identifions et recommandons.</li>
                 </ul>
-                <Link href="/devis?audit=1" className="btn-primary mt-8">
-                  Demander un audit <ArrowRight className="h-4 w-4" />
-                </Link>
+                <p className="mt-6 font-display text-sm text-white/70">
+                  {auditPack.name} : <span className="text-white">{auditPack.price}</span>
+                </p>
+                <div className="mt-4 flex flex-col gap-3 sm:flex-row">
+                  <Link href="/devis?audit=1" className="btn-primary">
+                    Demander un audit <ArrowRight className="h-4 w-4" />
+                  </Link>
+                  <Link href="/cybersecurite" className="btn-ghost">
+                    En savoir plus
+                  </Link>
+                </div>
               </div>
 
               <div>
