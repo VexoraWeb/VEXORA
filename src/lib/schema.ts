@@ -69,7 +69,7 @@ export const quoteSchema = z
       .refine((v) => v === "" || /^[0-9+().\s-]{6,25}$/.test(v), "Numéro de téléphone invalide."),
     company: text(120),
     preferredContact: z.enum(ids(contactMethods)),
-    consent: z.literal(true, { errorMap: () => ({ message: "Votre consentement est requis." }) }),
+    consent: z.literal(true, { error: "Votre consentement est requis." }),
   })
   .superRefine((d, ctx) => {
     if (d.hasWebsite === "oui" && d.websiteUrl === "") {
@@ -90,7 +90,7 @@ export const contactSchema = z.object({
   email: z.string().max(254).transform(clean).pipe(z.string().email("Adresse e-mail invalide.")),
   subject: text(150),
   message: requiredText(4000).pipe(z.string().min(10, "Votre message est un peu court.")),
-  consent: z.literal(true, { errorMap: () => ({ message: "Votre consentement est requis." }) }),
+  consent: z.literal(true, { error: "Votre consentement est requis." }),
 });
 
 export type QuotePayload = z.infer<typeof quoteSchema>;
