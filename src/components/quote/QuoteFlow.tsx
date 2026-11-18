@@ -170,7 +170,10 @@ export function QuoteFlow() {
   useEffect(() => {
     if (!ready || status === "sent") return;
     try {
-      sessionStorage.setItem(STORAGE_KEY, JSON.stringify({ ...f, consent: false }));
+      // Aucune donnée personnelle (identité, e-mail, téléphone) n'est conservée dans le brouillon.
+      const { firstName, lastName, email, phone, company, consent, hp, ...safe } = f;
+      void firstName; void lastName; void email; void phone; void company; void consent; void hp;
+      sessionStorage.setItem(STORAGE_KEY, JSON.stringify(safe));
     } catch {
       /* ignore */
     }
@@ -469,7 +472,7 @@ export function QuoteFlow() {
                 <div>
                   <label className="flex cursor-pointer items-start gap-3 text-sm text-white/60">
                     <input type="checkbox" checked={f.consent} onChange={(e) => set("consent", e.target.checked)} className="mt-1 h-4 w-4 accent-violet-500" />
-                    <span>J&apos;ai lu et j&apos;accepte la <a href="/confidentialite" target="_blank" className="text-violet-400 underline underline-offset-2">politique de confidentialité</a>. Mes données servent uniquement à traiter ma demande. *</span>
+                    <span>J&apos;ai lu et j&apos;accepte la <a href="/confidentialite" target="_blank" rel="noopener noreferrer" className="text-violet-400 underline underline-offset-2">politique de confidentialité</a>. Mes données servent uniquement à traiter ma demande. *</span>
                   </label>
                   <Err msg={errors.consent} />
                 </div>

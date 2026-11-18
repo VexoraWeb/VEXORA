@@ -32,6 +32,17 @@ export function rateLimit(key: string, limit: number, windowMs: number) {
   return { ok: true, retryAfter: 0 };
 }
 
+/** Soumissions en cours de traitement (évite deux envois simultanés identiques). */
+const inFlight = new Set<string>();
+export function beginSubmission(id: string): boolean {
+  if (inFlight.has(id)) return false;
+  inFlight.add(id);
+  return true;
+}
+export function endSubmission(id: string) {
+  inFlight.delete(id);
+}
+
 /** Soumissions déjà envoyées avec succès (anti-doublon). */
 const sent = new Map<string, number>();
 const SENT_TTL = 60 * 60 * 1000;

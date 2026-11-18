@@ -71,7 +71,7 @@ export function ContactSection() {
               <ul className="mt-3 space-y-3">
                 {socials.map(({ key, label, href, Icon }) => (
                   <li key={key}>
-                    {href ? (
+                    {/^https:\/\//i.test(href) ? (
                       <a
                         href={href}
                         target="_blank"
@@ -135,7 +135,7 @@ export function ContactSection() {
                     <input type="checkbox" checked={form.consent} onChange={(e) => set("consent", e.target.checked)} className="mt-1 h-4 w-4 accent-violet-500" />
                     <span>
                       J&apos;accepte que mes données soient utilisées pour répondre à ma demande, conformément à la{" "}
-                      <a href="/confidentialite" className="text-violet-400 underline underline-offset-2" target="_blank">politique de confidentialité</a>.
+                      <a href="/confidentialite" className="text-violet-400 underline underline-offset-2" target="_blank" rel="noopener noreferrer">politique de confidentialité</a>.
                     </span>
                   </label>
                   {fieldErrors.consent && <p className="text-xs text-red-300">{fieldErrors.consent}</p>}
