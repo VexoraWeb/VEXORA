@@ -40,9 +40,9 @@ export const navLinks = [
 // Prix — remplacer les placeholders par les vrais tarifs (ex. "À partir de 490 €")
 // ---------------------------------------------------------------------------
 export const prices = {
-  starter: "[PRIX_STARTER]",
-  business: "[PRIX_BUSINESS]",
-  premium: "[PRIX_PREMIUM]",
+  starter: "À partir de 350 €",
+  business: "À partir de 450 €",
+  premium: "À partir de 650 €",
 } as const;
 
 // ---------------------------------------------------------------------------
