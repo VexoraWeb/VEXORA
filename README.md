@@ -17,7 +17,7 @@ npm run build && npm start   # version de production
 | Variable | Rôle |
 |---|---|
 | `RESEND_API_KEY` | Clé API Resend (**secrète**, jamais committée) |
-| `CONTACT_EMAIL` | Destinataire des demandes (`600secu@proton.me`) |
+| `CONTACT_EMAIL` | Destinataire des demandes (`600secu_0@proton.me`) |
 | `RESEND_FROM_EMAIL` | Expéditeur. Défaut : `VEXORA_STUDIO <onboarding@resend.dev>` |
 | `NEXT_PUBLIC_SITE_URL` | URL publique du site (optionnel) |
 
@@ -27,7 +27,7 @@ Sans `RESEND_API_KEY`, `/api/contact` répond **503** et le site n'affiche **auc
 
 1. Créer un compte sur <https://resend.com>.
 2. *API Keys* → créer une clé, la copier dans `RESEND_API_KEY` (Netlify : *Site configuration → Environment variables*).
-3. **Test rapide** : avec l'expéditeur par défaut `onboarding@resend.dev`, Resend n'envoie qu'à l'adresse e-mail du compte Resend. Pour que `600secu@proton.me` reçoive les demandes, soit ouvrir le compte Resend avec cette adresse, soit passer à l'étape 4.
+3. **Test rapide** : avec l'expéditeur par défaut `onboarding@resend.dev`, Resend n'envoie qu'à l'adresse e-mail du compte Resend. Pour que `600secu_0@proton.me` reçoive les demandes, soit ouvrir le compte Resend avec cette adresse, soit passer à l'étape 4.
 4. **Production** : *Domains → Add Domain*, ajouter les enregistrements DNS (SPF, DKIM) chez votre registrar, attendre « Verified », puis définir `RESEND_FROM_EMAIL="VEXORA_STUDIO <contact@votre-domaine.fr>"`.
 5. Redéployer le site.
 

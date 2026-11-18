@@ -17,7 +17,7 @@ export const siteConfig = {
     "VEXORA_STUDIO crée des sites web modernes et personnalisés, et propose des audits de sécurité web. Demandez votre devis en ligne.",
   url: process.env.NEXT_PUBLIC_SITE_URL || "",
   /** Adresse affichée publiquement. Les demandes sont envoyées à CONTACT_EMAIL (variable d'environnement). */
-  contactEmail: "600secu@proton.me",
+  contactEmail: "600secu_0@proton.me",
   /** Laisser une chaîne vide pour masquer un réseau. Renseigner l'URL complète pour l'activer. */
   socials: {
     instagram: "", // ex. "https://instagram.com/vexora_studio"
